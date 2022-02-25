@@ -25,7 +25,7 @@ public class Wordle {
                 tries--;
                 continue;
             }
-            if (userTry.equals(secretWord)){
+            if (userTry.equalsIgnoreCase(secretWord)){
                 System.out.println("You win");
                 return;
             }

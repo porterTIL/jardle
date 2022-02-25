@@ -9,7 +9,7 @@ public class Wordle {
     Wordle(){
         System.out.println("To play wordle: enter a five letter word. Hit enter to continue");
         try {
-            Scanner generateWord = new Scanner(new File("C:\\StudentWork\\IntmJ\\workspace\\jardle\\src\\en_dictionary.csv")).useDelimiter(",");
+            Scanner generateWord = new Scanner(new File("jardle/src/en_dictionary.csv").getAbsoluteFile()).useDelimiter(",");
             secretWord = generateWord.next();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

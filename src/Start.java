@@ -1,6 +1,5 @@
 public class Start {
 
-
     public static void Title() {
         System.out.println("       _               _ _      ");
         System.out.println("      | |             | | |     ");

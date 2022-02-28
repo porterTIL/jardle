@@ -1,11 +1,3 @@
-import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class Start {
 
     public static void Title() {
@@ -17,10 +9,10 @@ public class Start {
         System.out.println("  \\____/ \\__,_|_|  \\__,_|_|\\___|");
     }
 
-    //still want to put a delay between lines of instructions
+    // want to add a delay before printing next instruction
 
     public static void printInstructions() {
-        System.out.println("Welcome to Jardle!");
+        System.out.println("Welcome to Jardle! \n");
         System.out.println("The task is to guess the five letter word within six tries.");
         System.out.println("The guesssed letters will be either grey, yellow, or green.");
         System.out.println("Green letters are in the correct position.");
@@ -31,8 +23,8 @@ public class Start {
         System.out.println("GOOD LUCK!");
     }
 
-    //start new game...  somehow.
-    public static void startGame() {
+    // start new game...  somehow.
+    public static void  startNew() {
 
     }
 }

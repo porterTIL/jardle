@@ -28,11 +28,11 @@ public class Avatar {
                 " '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' "
                 + ANSI_RESET);
     }
-
+    //Tracks player health
     public void playerHealth() {
         playerHP = playerHP - 1;
     }
-
+    // Perma kills player if their health drops below 1
     public void deadPlayer() {
         System.out.println("You have " + ANSI_RED_LETTER + "DIED!");
         System.exit(0);

@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class Map {
     Scanner playerScanner = new Scanner(System.in);
-    Wordle word = new Wordle();
 
-
+    // TODO: add an image of the map (using an rpg dungeon builder?) to work folder
+    // if an area has monster in it, launch a wordle mini-game
     public void area1() {
         System.out.println("You encounter a monster!");
         System.out.println("Defeat the monster to proceed.");
-        word.Wordle();
+        Game.monsterEncounter();
         System.out.println("Which direction do you want to move.");
         System.out.println("1: Go East");
         System.out.println("2: Go South");
@@ -49,8 +49,6 @@ public class Map {
         } else if (choice == 2) {
             area6();
         }
-
-
     }
 
     public void area4() {
@@ -93,7 +91,6 @@ public class Map {
         } else if (choice == 2) {
             area9();
         }
-
     }
 
     public void area7() {
@@ -104,8 +101,6 @@ public class Map {
         if (choice == 1) {
             area8();
         }
-
-
     }
 
     public void area8() {
@@ -119,7 +114,6 @@ public class Map {
         } else if (choice == 2) {
             area7();
         }
-
     }
 
     public void area9() {
@@ -133,7 +127,6 @@ public class Map {
         } else if (choice == 2) {
             exit();
         }
-
     }
 
     public void exit() {

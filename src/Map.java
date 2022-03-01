@@ -2,16 +2,15 @@ import java.util.Scanner;
 
 public class Map {
     Scanner playerScanner = new Scanner(System.in);
-    Wordle word = new Wordle();
     int choice = 0;
 
-
+    // TODO: add an image of the map (using an rpg dungeon builder?) to work folder
+    // if an area has monster in it, launch a wordle mini-game
     public void area1() {
         System.out.println("Welcome to Area 1");
         System.out.println("You encounter a monster!");
         System.out.println("Defeat the monster to proceed.");
-        word.Wordle();
-
+        Game.monsterEncounter();
         do {
             System.out.println("Which direction do you want to move.");
             System.out.println("1: Go East");
@@ -70,8 +69,6 @@ public class Map {
                 System.out.println("Enter only option number");
             }
         } while (true);
-
-
     }
 
     public void area4() {
@@ -118,6 +115,7 @@ public class Map {
     }
 
     public void area6() {
+
         System.out.println("Welcome to area 6");
         do {
             System.out.println("Which direction do you want to move.");
@@ -135,7 +133,6 @@ public class Map {
                 System.out.println("Enter only option number");
             }
         } while (true);
-
     }
 
     public void area7() {
@@ -143,6 +140,7 @@ public class Map {
         do {
             System.out.println("Which direction do you want to move.");
             System.out.println("1: Go East");
+
 
             int choice = playerScanner.nextInt();
             if (choice == 1) {
@@ -152,8 +150,6 @@ public class Map {
                 System.out.println("Enter only option number");
             }
         } while (true);
-
-
     }
 
     public void area8() {
@@ -174,7 +170,6 @@ public class Map {
                 System.out.println("Enter only option number");
             }
         } while (true);
-
     }
 
     public void area9() {
@@ -195,7 +190,6 @@ public class Map {
                 System.out.println("Enter only option number");
             }
         } while (true);
-
     }
 
     public void exit() {

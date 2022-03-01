@@ -1,6 +1,6 @@
 public class Start {
 
-    public static void Title() {
+    public static void title() {
         System.out.println("       _               _ _      ");
         System.out.println("      | |             | | |     ");
         System.out.println("      | | __ _ _ __ __| | | ___ ");
@@ -9,8 +9,7 @@ public class Start {
         System.out.println("  \\____/ \\__,_|_|  \\__,_|_|\\___|");
     }
 
-    // want to add a delay before printing next instruction
-
+    // TODO: add a delay before printing next instruction
     public static void printInstructions() {
         System.out.println("Welcome to Jardle! \n");
         System.out.println("The task is to guess the five letter word within six tries.");
@@ -23,8 +22,8 @@ public class Start {
         System.out.println("GOOD LUCK!");
     }
 
-    // start new game...  somehow.
-    public static void  startNew() {
-
+    // TODO: hit any key to start new game
+    static void newGame() {
+        Game.enterDungeon();
     }
 }

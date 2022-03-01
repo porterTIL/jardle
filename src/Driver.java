@@ -1,5 +1,7 @@
 public class Driver {
     public static void main(String[] args) {
-        Wordle wordle = new Wordle();
+        Start.title();
+        Start.printInstructions();
+        Start.newGame();
     }
 }

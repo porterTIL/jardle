@@ -31,6 +31,7 @@ public class Wordle {
             if (player.playerHP < 1) {
                 player.deadPlayer();
             }
+            System.out.println("Enter a 5 letter word");
             Scanner userInput = new Scanner(System.in);
             String userTry = userInput.nextLine();
             if (userTry.length() != 5) {

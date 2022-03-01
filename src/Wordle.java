@@ -20,7 +20,7 @@ abstract public class Wordle {
         List<String> words = new ArrayList<>(); // stores all words from our dictionary file so that we can easily grab random word
        try {
                // TODO: the filePath for the fileReader is not consistent across systems
-               Scanner wordList = new Scanner(new FileReader("jardle/src/en_dictionary.csv"));
+               Scanner wordList = new Scanner(new FileReader("src/en_dictionary.csv"));
 
                while (wordList.hasNext()) {                    // loop through dictionary and add all words to ArrayList
                    secretWord = wordList.next();
@@ -65,5 +65,6 @@ abstract public class Wordle {
                System.out.println("You entered string: " + userTry);
            }
           return false;
+
     }
 }

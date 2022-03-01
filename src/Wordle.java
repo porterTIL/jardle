@@ -8,11 +8,11 @@ import java.util.Scanner;
 
 public class Wordle {
     String secretWord;
-    String [] userGuesses = new String[5];
+    String[] userGuesses = new String[5];
+    Avatar player = new Avatar();
+    List<String> words = new ArrayList<>();
 
-    Wordle(){
-        List<String> words  = new ArrayList<>();
-        System.out.println("To play wordle: enter a five letter word. Hit enter to continue");
+    public void Wordle() {
         try {
             Scanner wordList = new Scanner(new FileReader("src/en_dictionary.csv"));
 
@@ -28,18 +28,26 @@ public class Wordle {
         }
 
         for (int tries = 0; tries < 6; tries++) {
+            if (player.playerHP < 1) {
+                player.deadPlayer();
+            }
             Scanner userInput = new Scanner(System.in);
             String userTry = userInput.nextLine();
-            if ( userTry.length() != 5 ){
+            if (userTry.length() != 5) {
                 System.out.println("Valid words are exactly 5 characters long");
                 System.out.println("Try has not counted");
                 tries--;
                 continue;
             }
-            if (userTry.equalsIgnoreCase(this.secretWord)){
+            if (userTry.equalsIgnoreCase(this.secretWord)) {
                 System.out.println("You win");
                 return;
             }
+            if (tries > 4) {
+                player.playerHealth();
+                Wordle();
+            }
+
             System.out.println("You entered string: " + userTry);
         }
     }

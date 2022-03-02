@@ -6,6 +6,34 @@ public class Map {
 
     // TODO: add an image of the map (using an rpg dungeon builder?) to work folder
     // if an area has monster in it, launch a wordle mini-game
+    // Start room does not have monster and player will be able to choose first three areas
+    public void startRoom() {
+        Avatar avatar = new Avatar();
+        System.out.println("Welcome warrior! You are in the entrance of the dungeon that you are going to traverse.");
+        System.out.println("I am called Brynhildr. What is your name warrior?");
+        avatar.playerStart();
+
+        do {
+            System.out.println("Which direction do you want to move.");
+            System.out.println("1: Area 1");
+            System.out.println("2: Area 2");
+            System.out.println("3: Area 3");
+            choice = playerScanner.nextInt();
+            if (choice == 1) {
+                area1();
+                break;
+            } else if (choice == 2) {
+                area2();
+                break;
+            } else if (choice == 3) {
+                area3();
+                break;
+            } else {
+                System.out.println("Enter only option number");
+            }
+        } while (true);
+    }
+
     public void area1() {
         System.out.println("Welcome to Area 1");
         System.out.println("You encounter a monster!");

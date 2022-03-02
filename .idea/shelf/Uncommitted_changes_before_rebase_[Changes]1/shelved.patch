@@ -1,0 +1,122 @@
+Index: src/Avatar.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.Scanner;\r\nimport java.awt.Color;\r\n\r\npublic class Avatar {\r\n    int playerHP = 3;\r\n    String playerName;\r\n    // String playerInventory;\r\n    Scanner scan = new Scanner(System.in);\r\n\r\n    public static final String ANSI_RESET = \"\\u001B[0m\";\r\n    public static final String ANSI_RED_LETTER = \"\\u001B[31m\";\r\n    public static final String ANSI_CYAN_LETTER = \"\\u001B[36m\";\r\n\r\n    public void playerStart() {\r\n        System.out.println(\"Please enter your player names: \");\r\n        playerName = scan.nextLine();\r\n        System.out.println(\"Welcome \" + playerName + \" , to the world of\\n\");\r\n        System.out.println(ANSI_CYAN_LETTER + \".----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------. \\n\" +\r\n                \"| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |\\n\" +\r\n                \"| |     _____    | || |      __      | || |  _______     | || |  ________    | || |   _____      | || |  _________   | |\\n\" +\r\n                \"| |    |_   _|   | || |     /  \\\\     | || | |_   __ \\\\    | || | |_   ___ `.  | || |  |_   _|     | || | |_   ___  |  | |\\n\" +\r\n                \"| |      | |     | || |    / /\\\\ \\\\    | || |   | |__) |   | || |   | |   `. \\\\ | || |    | |       | || |   | |_  \\\\_|  | |\\n\" +\r\n                \"| |   _  | |     | || |   / ____ \\\\   | || |   |  __ /    | || |   | |    | | | || |    | |   _   | || |   |  _|  _   | |\\n\" +\r\n                \"| |  | |_' |     | || | _/ /    \\\\ \\\\_ | || |  _| |  \\\\ \\\\_  | || |  _| |___.' / | || |   _| |__/ |  | || |  _| |___/ |  | |\\n\" +\r\n                \"| |  `.___.'     | || ||____|  |____|| || | |____| |___| | || | |________.'  | || |  |________|  | || | |_________|  | |\\n\" +\r\n                \"| |              | || |              | || |              | || |              | || |              | || |              | |\\n\" +\r\n                \"| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |\\n\" +\r\n                \" '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' \"\r\n                + ANSI_RESET);\r\n    }\r\n    //Tracks player health\r\n    public void playerHealth() {\r\n        playerHP = playerHP - 1;\r\n    }\r\n    // Perma kills player if their health drops below 1\r\n    public void deadPlayer() {\r\n        System.out.println(\"You have \" + ANSI_RED_LETTER + \"DIED!\");\r\n        System.exit(0);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Avatar.java b/src/Avatar.java
+--- a/src/Avatar.java	(revision 2a8c2fc877939ff4d574727c209aea5f97263f6e)
++++ b/src/Avatar.java	(date 1646235702727)
+@@ -34,7 +34,8 @@
+     }
+     // Perma kills player if their health drops below 1
+     public void deadPlayer() {
+-        System.out.println("You have " + ANSI_RED_LETTER + "DIED!");
++        System.out.println("You have " + ANSI_RED_LETTER + "DIED!" + ANSI_RESET);
++        System.out.println("Welcome to Valhalla!");
+         System.exit(0);
+     }
+ }
+Index: src/Map.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.Scanner;\r\n\r\npublic class Map {\r\n    Scanner playerScanner = new Scanner(System.in);\r\n    int choice = 0;\r\n\r\n    // TODO: add an image of the map (using an rpg dungeon builder?) to work folder\r\n    // if an area has monster in it, launch a wordle mini-game\r\n    public void area1() {\r\n        System.out.println(\"Welcome to Area 1\");\r\n        System.out.println(\"You encounter a monster!\");\r\n        System.out.println(\"Defeat the monster to proceed.\");\r\n        Game.monsterEncounter();\r\n        do {\r\n            System.out.println(\"Which direction do you want to move.\");\r\n            System.out.println(\"1: Go East\");\r\n            System.out.println(\"2: Go South\");\r\n            choice = playerScanner.nextInt();\r\n            if (choice == 1) {\r\n                area2();\r\n                break;\r\n            } else if (choice == 2) {\r\n                area4();\r\n                break;\r\n            } else {\r\n                System.out.println(\"Enter only option number\");\r\n            }\r\n        } while (true);\r\n    }\r\n\r\n    public void area2() {\r\n        System.out.println(\"Welcome to area 2\");\r\n        do {\r\n            System.out.println(\"Which direction do you want to move.\");\r\n            System.out.println(\"1: Go West\");\r\n            System.out.println(\"2: Go East\");\r\n\r\n            choice = playerScanner.nextInt();\r\n            if (choice == 1) {\r\n                area1();\r\n                break;\r\n            } else if (choice == 2) {\r\n                area3();\r\n                break;\r\n            } else {\r\n                System.out.println(\"Enter only option number\");\r\n            }\r\n        } while (true);\r\n    }\r\n\r\n    // Rest Area Zone\r\n    // Potential health recovery options\r\n    public void area3() {\r\n        System.out.println(\"Welcome to area 3\");\r\n        do {\r\n            System.out.println(\"You have entered a resting zone.\");\r\n            System.out.println(\"Which direction do you want to move.\");\r\n            System.out.println(\"1: Go West\");\r\n            System.out.println(\"2: GO South\");\r\n\r\n            int choice = playerScanner.nextInt();\r\n            if (choice == 1) {\r\n                area2();\r\n                break;\r\n            } else if (choice == 2) {\r\n                area6();\r\n                break;\r\n            } else {\r\n                System.out.println(\"Enter only option number\");\r\n            }\r\n        } while (true);\r\n    }\r\n\r\n    public void area4() {\r\n        System.out.println(\"Welcome to area 4\");\r\n        do {\r\n            System.out.println(\"Which direction do you want to move.\");\r\n            System.out.println(\"1: Go North\");\r\n            System.out.println(\"2: Go East\");\r\n\r\n            int choice = playerScanner.nextInt();\r\n            if (choice == 1) {\r\n                area1();\r\n                break;\r\n            } else if (choice == 2) {\r\n                area5();\r\n                break;\r\n            } else {\r\n                System.out.println(\"Enter only option number\");\r\n            }\r\n        } while (true);\r\n    }\r\n\r\n    // Rest Area Zone\r\n    // Potential health recovery options\r\n    public void area5() {\r\n        System.out.println(\"Welcome to area 5\");\r\n        do {\r\n            System.out.println(\"You have entered a resting zone\");\r\n            System.out.println(\"Which direction do you want to move.\");\r\n            System.out.println(\"1: Go West\");\r\n            System.out.println(\"2: Go South\");\r\n\r\n            int choice = playerScanner.nextInt();\r\n            if (choice == 1) {\r\n                area4();\r\n                break;\r\n            } else if (choice == 2) {\r\n                area8();\r\n                break;\r\n            } else {\r\n                System.out.println(\"Enter only option number\");\r\n            }\r\n        } while (true);\r\n    }\r\n\r\n    public void area6() {\r\n\r\n        System.out.println(\"Welcome to area 6\");\r\n        do {\r\n            System.out.println(\"Which direction do you want to move.\");\r\n            System.out.println(\"1: Go North\");\r\n            System.out.println(\"2: Go South\");\r\n\r\n            int choice = playerScanner.nextInt();\r\n            if (choice == 1) {\r\n                area3();\r\n                break;\r\n            } else if (choice == 2) {\r\n                area9();\r\n                break;\r\n            } else {\r\n                System.out.println(\"Enter only option number\");\r\n            }\r\n        } while (true);\r\n    }\r\n\r\n    public void area7() {\r\n        System.out.println(\"Welcome to area 7\");\r\n        do {\r\n            System.out.println(\"Which direction do you want to move.\");\r\n            System.out.println(\"1: Go East\");\r\n\r\n\r\n            int choice = playerScanner.nextInt();\r\n            if (choice == 1) {\r\n                area8();\r\n                break;\r\n            } else {\r\n                System.out.println(\"Enter only option number\");\r\n            }\r\n        } while (true);\r\n    }\r\n\r\n    public void area8() {\r\n        System.out.println(\"Welcome to area 8\");\r\n        do {\r\n            System.out.println(\"Which direction do you want to move.\");\r\n            System.out.println(\"1: Go North\");\r\n            System.out.println(\"2: Go West\");\r\n\r\n            int choice = playerScanner.nextInt();\r\n            if (choice == 1) {\r\n                area5();\r\n                break;\r\n            } else if (choice == 2) {\r\n                area7();\r\n                break;\r\n            } else {\r\n                System.out.println(\"Enter only option number\");\r\n            }\r\n        } while (true);\r\n    }\r\n\r\n    public void area9() {\r\n        System.out.println(\"Welcome to area 9\");\r\n        do {\r\n            System.out.println(\"Which direction do you want to move.\");\r\n            System.out.println(\"1: Go North\");\r\n            System.out.println(\"2: Go East\");\r\n\r\n            int choice = playerScanner.nextInt();\r\n            if (choice == 1) {\r\n                area6();\r\n                break;\r\n            } else if (choice == 2) {\r\n                exit();\r\n                break;\r\n            } else {\r\n                System.out.println(\"Enter only option number\");\r\n            }\r\n        } while (true);\r\n    }\r\n\r\n    public void exit() {\r\n        System.out.println(\"Congratulation! You made it out of the dungeon!\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Map.java b/src/Map.java
+--- a/src/Map.java	(revision 2a8c2fc877939ff4d574727c209aea5f97263f6e)
++++ b/src/Map.java	(date 1646235702734)
+@@ -6,6 +6,34 @@
+ 
+     // TODO: add an image of the map (using an rpg dungeon builder?) to work folder
+     // if an area has monster in it, launch a wordle mini-game
++    // Start room does not have monster and player will be able to choose first three areas
++    public void startRoom() {
++        Avatar avatar = new Avatar();
++        System.out.println("Welcome warrior! You are in the entrance of the dungeon that you are going to traverse.");
++        System.out.println("I am called Brynhildr. What is your name warrior?");
++        avatar.playerStart();
++
++        do {
++            System.out.println("Which direction do you want to move.");
++            System.out.println("1: Area 1");
++            System.out.println("2: Area 2");
++            System.out.println("3: Area 3");
++            choice = playerScanner.nextInt();
++            if (choice == 1) {
++                area1();
++                break;
++            } else if (choice == 2) {
++                area2();
++                break;
++            } else if (choice == 3) {
++                area3();
++                break;
++            } else {
++                System.out.println("Enter only option number");
++            }
++        } while (true);
++    }
++
+     public void area1() {
+         System.out.println("Welcome to Area 1");
+         System.out.println("You encounter a monster!");
+Index: src/Game.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>abstract public class Game {\r\n    static Avatar player = new Avatar();\r\n    static Map map = new Map();\r\n\r\n   static void enterDungeon(){\r\n       map.area1();\r\n   }\r\n    static void monsterEncounter(){\r\n        if(Wordle.miniGame() == false){\r\n            player.playerHealth();\r\n            if (player.playerHP == 0){\r\n                player.deadPlayer();\r\n            }\r\n            monsterEncounter();\r\n        }\r\n        System.out.println(\"You have defeated this monster\");\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Game.java b/src/Game.java
+--- a/src/Game.java	(revision 2a8c2fc877939ff4d574727c209aea5f97263f6e)
++++ b/src/Game.java	(date 1646235702742)
+@@ -3,7 +3,7 @@
+     static Map map = new Map();
+ 
+    static void enterDungeon(){
+-       map.area1();
++       map.startRoom();
+    }
+     static void monsterEncounter(){
+         if(Wordle.miniGame() == false){
+Index: jardle.iml
+===================================================================
+diff --git a/jardle.iml b/jardle.iml
+deleted file mode 100644
+--- a/jardle.iml	(revision 2a8c2fc877939ff4d574727c209aea5f97263f6e)
++++ /dev/null	(revision 2a8c2fc877939ff4d574727c209aea5f97263f6e)
+@@ -1,11 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="JAVA_MODULE" version="4">
+-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+-    <exclude-output />
+-    <content url="file://$MODULE_DIR$">
+-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+-    </content>
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: src/Start.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Start {\r\n\r\n    public static void title() {\r\n        System.out.println(\"       _               _ _      \");\r\n        System.out.println(\"      | |             | | |     \");\r\n        System.out.println(\"      | | __ _ _ __ __| | | ___ \");\r\n        System.out.println(\"  _   | |/ _` | '__/ _` | |/ _ \");\r\n        System.out.println(\" | |__| | (_| | | | (_| | |  __/\");\r\n        System.out.println(\"  \\\\____/ \\\\__,_|_|  \\\\__,_|_|\\\\___|\");\r\n    }\r\n\r\n    // TODO: add a delay before printing next instruction\r\n    public static void printInstructions() {\r\n        System.out.println(\"Welcome to Jardle! \\n\");\r\n        System.out.println(\"The task is to guess the five letter word within six tries.\");\r\n        System.out.println(\"The guesssed letters will be either grey, yellow, or green.\");\r\n        System.out.println(\"Green letters are in the correct position.\");\r\n        System.out.println(\"Yellow letters are in the word, but in the wrong place.\");\r\n        System.out.println(\"Grey letters are not located within the word.\");\r\n        System.out.println(\"After solving each word, follow the directions to choose the next room and monster to defeat!\");\r\n        System.out.println(\"Failing to solve the word in six tries means you lose (and start over)!\");\r\n        System.out.println(\"GOOD LUCK!\");\r\n    }\r\n\r\n    // TODO: hit any key to start new game\r\n    static void newGame() {\r\n        Game.enterDungeon();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Start.java b/src/Start.java
+--- a/src/Start.java	(revision 2a8c2fc877939ff4d574727c209aea5f97263f6e)
++++ b/src/Start.java	(date 1646235702764)
+@@ -13,7 +13,7 @@
+     public static void printInstructions() {
+         System.out.println("Welcome to Jardle! \n");
+         System.out.println("The task is to guess the five letter word within six tries.");
+-        System.out.println("The guesssed letters will be either grey, yellow, or green.");
++        System.out.println("The guessed letters will be either grey, yellow, or green.");
+         System.out.println("Green letters are in the correct position.");
+         System.out.println("Yellow letters are in the word, but in the wrong place.");
+         System.out.println("Grey letters are not located within the word.");

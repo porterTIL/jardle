@@ -13,7 +13,7 @@ public class Start {
     public static void printInstructions() {
         System.out.println("Welcome to Jardle! \n");
         System.out.println("The task is to guess the five letter word within six tries.");
-        System.out.println("The guesssed letters will be either grey, yellow, or green.");
+        System.out.println("The guessed letters will be either grey, yellow, or green.");
         System.out.println("Green letters are in the correct position.");
         System.out.println("Yellow letters are in the word, but in the wrong place.");
         System.out.println("Grey letters are not located within the word.");

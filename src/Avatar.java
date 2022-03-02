@@ -34,7 +34,8 @@ public class Avatar {
     }
     // Perma kills player if their health drops below 1
     public void deadPlayer() {
-        System.out.println("You have " + ANSI_RED_LETTER + "DIED!");
+        System.out.println("You have " + ANSI_RED_LETTER + "DIED!" + ANSI_RESET);
+        System.out.println("Welcome to Valhalla!");
         System.exit(0);
     }
 }

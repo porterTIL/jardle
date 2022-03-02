@@ -7,26 +7,34 @@ public class Avatar {
     // String playerInventory;
     Scanner scan = new Scanner(System.in);
 
-    public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED_LETTER = "\u001B[31m";
+    public static final String ANSI_YELLOW_LETTER = "\u001B[33m";
+    public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_CYAN_LETTER = "\u001B[36m";
 
     public void playerStart() {
-        System.out.println("Please enter your player names: ");
-        playerName = scan.nextLine();
-        System.out.println("Welcome " + playerName + " , to the world of\n");
-        System.out.println(ANSI_CYAN_LETTER + ".----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------. \n" +
-                "| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |\n" +
-                "| |     _____    | || |      __      | || |  _______     | || |  ________    | || |   _____      | || |  _________   | |\n" +
-                "| |    |_   _|   | || |     /  \\     | || | |_   __ \\    | || | |_   ___ `.  | || |  |_   _|     | || | |_   ___  |  | |\n" +
-                "| |      | |     | || |    / /\\ \\    | || |   | |__) |   | || |   | |   `. \\ | || |    | |       | || |   | |_  \\_|  | |\n" +
-                "| |   _  | |     | || |   / ____ \\   | || |   |  __ /    | || |   | |    | | | || |    | |   _   | || |   |  _|  _   | |\n" +
-                "| |  | |_' |     | || | _/ /    \\ \\_ | || |  _| |  \\ \\_  | || |  _| |___.' / | || |   _| |__/ |  | || |  _| |___/ |  | |\n" +
-                "| |  `.___.'     | || ||____|  |____|| || | |____| |___| | || | |________.'  | || |  |________|  | || | |_________|  | |\n" +
-                "| |              | || |              | || |              | || |              | || |              | || |              | |\n" +
-                "| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |\n" +
-                " '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' "
-                + ANSI_RESET);
+        try {
+            System.out.println("Please enter your player names: ");
+            playerName = scan.nextLine();
+            System.out.println("Welcome " + ANSI_CYAN_LETTER + playerName + ANSI_RESET + " , to the world of\n");
+            Thread.sleep(3000);
+            System.out.println(ANSI_YELLOW_LETTER +
+                    " ▄▄▄██▀▀▀▄▄▄       ██▀███  ▓█████▄  ██▓    ▓█████ \n" +
+                    "   ▒██  ▒████▄    ▓██ ▒ ██▒▒██▀ ██▌▓██▒    ▓█   ▀ \n" +
+                    "   ░██  ▒██  ▀█▄  ▓██ ░▄█ ▒░██   █▌▒██░    ▒███   \n" +
+                    "▓██▄██▓ ░██▄▄▄▄██ ▒██▀▀█▄  ░▓█▄   ▌▒██░    ▒▓█  ▄ \n" +
+                    " ▓███▒   ▓█   ▓██▒░██▓ ▒██▒░▒████▓ ░██████▒░▒████▒\n" +
+                    " ▒▓▒▒░   ▒▒   ▓▒█░░ ▒▓ ░▒▓░ ▒▒▓  ▒ ░ ▒░▓  ░░░ ▒░ ░\n" +
+                    " ▒ ░▒░    ▒   ▒▒ ░  ░▒ ░ ▒░ ░ ▒  ▒ ░ ░ ▒  ░ ░ ░  ░\n" +
+                    " ░ ░ ░    ░   ▒     ░░   ░  ░ ░  ░   ░ ░      ░   \n" +
+                    " ░   ░        ░  ░   ░        ░        ░  ░   ░  ░\n" +
+                    "                            ░                    "
+                    + ANSI_RESET);
+
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
     }
     //Tracks player health
     public void playerHealth() {
@@ -35,6 +43,7 @@ public class Avatar {
     // Perma kills player if their health drops below 1
     public void deadPlayer() {
         System.out.println("You have " + ANSI_RED_LETTER + "DIED!");
+        System.out.println("Welcome to Valhalla!" + ANSI_RESET);
         System.exit(0);
     }
 }

@@ -3,7 +3,7 @@ abstract public class Game {
     static Map map = new Map();
 
    static void enterDungeon(){
-       map.area1();
+       map.startRoom();
    }
     static void monsterEncounter(){
         if(Wordle.miniGame() == false){

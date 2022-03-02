@@ -28,7 +28,7 @@ public class Start {
     //clear screen after title and instructions print
     public static void clearRules() {
         Scanner clear = new Scanner(System.in);
-        System.out.println("Press any key and hit enter to clear rules");
+        System.out.println("Press any key and hit enter to clear rules...");
 
         String input = clear.nextLine();
         System.out.println(System.lineSeparator().repeat(50));
@@ -38,6 +38,10 @@ public class Start {
 
     // TODO: hit any key to start new game
     static void newGame() {
+        Scanner begin = new Scanner(System.in);
+        System.out.println("Press any key to begin...");
+
+        String start = begin.nextLine();
         Game.enterDungeon();
     }
 }

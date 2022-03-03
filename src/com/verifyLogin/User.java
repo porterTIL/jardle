@@ -6,43 +6,66 @@ import java.util.Scanner;
 
 public class User {
 
-
-    private static Scanner x;
-
-
-    /**
-     */
-    public static void verifyLogin(String username, String password){
-        boolean found = false;
-        String tempUsername = "";
-        String tempPassword = "";
+    public static void verifyLogin(){
+        boolean verified = false;
+        String dbUsername;
+        String dbPassword;
         String filepath = "C:\\Java StudentWork pt1\\IntroJava\\workspace\\jardle\\src\\com\\verifyLogin\\users.txt";
+
+        // scanner for entering user input for username and password
+        Scanner fetchUsername = new Scanner(System.in);
+        System.out.println("Enter your username.");
+        String username = fetchUsername.next();
+
+        Scanner fetchPwd = new Scanner(System.in);
+        System.out.println("Enter password.");
+        String password = fetchPwd.next();
+
+
 
         // try-catch for dealing w file handling
         try {
-            // this scanner reads the txt doc and defines how to read the file (un & pwd separated by comma)
+//             this scanner reads the txt doc and defines how to read the file (un & pwd separated by comma)
 
-            x = new Scanner (new File(filepath));
-            x.useDelimiter("[,\n]");
+            Scanner passwordFile = new Scanner(new File(filepath));
+            // tells scanner that each field is separated by comma
+            passwordFile.useDelimiter("[,\n]");
 
             // read txt doc to look for username and password
-            while(x.hasNext() && !found){
-//                System.out.println(tempPassword);
-//                System.out.println(tempUsername);
-                tempUsername = x.next();
-                tempPassword = x.next();
-                System.out.println(tempPassword);
-                System.out.println(tempUsername);
+            while(passwordFile.hasNext() && !verified){
+                dbUsername = passwordFile.next();
+                dbPassword = passwordFile.next();
 
-                    if(tempUsername.trim().equals(username.trim()) && tempPassword.trim().equals(password.trim())){
-                    found = true;
+                    // reads records in txt file,
+                    if(dbUsername.trim().equals(username.trim()) && dbPassword.trim().equals(password.trim())){
+                    verified = true;
                 }
             }
-            x.close();
-            System.out.println("found");
+            passwordFile.close();
+            System.out.println(verified);
+            // if statement to handle wrong login info, prompts user to exit or try again
+            if(!verified){
+                System.out.println("Wrong username or password. Press 'q' to exit or 'c' to try again");
+                while(true){
+                    Scanner errorScanner = new Scanner(System.in);
+                    String userInput = errorScanner.next();
+                    if (userInput.equals("c")){
+                        verifyLogin();
+                    }
+                    if (userInput.equals("q")){
+                        System.exit(0);
+                    }
+                    System.out.println(userInput);
+                   if (!userInput.equals("c") && !userInput.equals("q")){
+                        System.out.println("Invalid input. Wrong username or password. Press 'q' to exit or 'c' to try again");
+                        errorScanner.close();
+                    }
+                }
+            }
         }
+        // if exception, stacktrace will retrace to find where exception was thrown in class structure
         catch (Exception e) {
-            System.out.println("Error");
+            System.out.println(e.getStackTrace());
         }
     }
 

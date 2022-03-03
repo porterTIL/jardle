@@ -1,17 +1,10 @@
+import java.util.Scanner;
+
 public class Start {
     public static final String ANSI_YELLOW_LETTER = "\u001B[33m";
     public static final String ANSI_GREEN_LETTER = "\u001B[32m";
     public static final String ANSI_RED_LETTER = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
-
-    public static void title() {
-        System.out.println("       _               _ _      ");
-        System.out.println("      | |             | | |     ");
-        System.out.println("      | | __ _ _ __ __| | | ___ ");
-        System.out.println("  _   | |/ _` | '__/ _` | |/ _ ");
-        System.out.println(" | |__| | (_| | | | (_| | |  __/");
-        System.out.println("  \\____/ \\__,_|_|  \\__,_|_|\\___|");
-    }
 
     // TODO: add a delay before printing next instruction
     public static void printInstructions() {
@@ -36,7 +29,17 @@ public class Start {
                     "(and START OVER)!" + ANSI_RESET);
             Thread.sleep(1000);
             System.out.println(ANSI_YELLOW_LETTER + "GOOD LUCK!" + ANSI_RESET);
+            Thread.sleep(3000);
         } catch(InterruptedException e) {}
+    }
+
+    public static void clearRules() {
+        Scanner clear = new Scanner(System.in);
+        System.out.println("Press any key and hit enter to clear rules");
+
+        String input = clear.nextLine();
+        System.out.println(System.lineSeparator().repeat(50));
+
     }
 
     // TODO: hit any key to start new game

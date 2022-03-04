@@ -4,7 +4,6 @@ import java.awt.Color;
 public class Avatar {
     int playerHP = 3;
     String playerName;
-    // String playerInventory;
     Scanner scan = new Scanner(System.in);
 
     public static final String ANSI_RED_LETTER = "\u001B[31m";

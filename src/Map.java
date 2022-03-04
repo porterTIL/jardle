@@ -14,9 +14,7 @@ public class Map {
     public static final String ANSI_RESET = "\u001B[0m";
     Avatar avatar = new Avatar();
 
-    // TODO: add an image of the map (using an rpg dungeon builder?) to work folder
     // if an area has monster in it, launch a wordle mini-game
-    // Start room does not have monster and player will be able to choose first three areas
     public void startRoom() {
         try {
             Thread.sleep(2000);
@@ -56,8 +54,6 @@ public class Map {
         try {
             System.out.println("You tentatively explore the foyer and are careful not to disturb anything.");
             Thread.sleep(2000);
-            //System.out.println("You encounter a" + ANSI_GREEN_LETTER + " GHOST!");
-            //Thread.sleep(1000);
             System.out.println("                                 .*(&@@@%(*                                     \n" +
                     "                        @@@@/                  .@@@@                            \n" +
                     "                    /@@#                              @@                        \n" +
@@ -437,7 +433,7 @@ try {
         } while (true);
     } catch (InterruptedException e) {}
     }
-// Potential boss room
+// boss room
     public void area9() {
         try {
             System.out.println("This door is locked, but it doesn't take long to pick the old lock.\n" +

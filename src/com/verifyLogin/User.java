@@ -3,7 +3,6 @@ package com.verifyLogin;
 import java.io.File;
 import java.util.Scanner;
 
-
 public class User {
 
     public static void verifyLogin(){
@@ -21,12 +20,9 @@ public class User {
         System.out.println("Enter password.");
         String password = fetchPwd.next();
 
-
-
         // try-catch for dealing w file handling
         try {
-//             this scanner reads the txt doc and defines how to read the file (un & pwd separated by comma)
-
+        // this scanner reads the txt doc and defines how to read the file (un & pwd separated by comma)
             Scanner passwordFile = new Scanner(new File(filepath));
             // tells scanner that each field is separated by comma
             passwordFile.useDelimiter("[,\n]");
@@ -55,7 +51,6 @@ public class User {
                     if (userInput.equals("q")){
                         System.exit(0);
                     }
-                    System.out.println(userInput);
                    if (!userInput.equals("c") && !userInput.equals("q")){
                         System.out.println("Invalid input. Wrong username or password. Press 'q' to exit or 'c' to try again");
                         errorScanner.close();
@@ -68,5 +63,4 @@ public class User {
             System.out.println(e.getStackTrace());
         }
     }
-
 }

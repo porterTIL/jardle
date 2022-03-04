@@ -6,7 +6,6 @@ public class Start {
     public static final String ANSI_RED_LETTER = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
 
-    // TODO: add a delay before printing next instruction
     public static void printInstructions() {
         try {
             Thread.sleep(1000);
@@ -39,10 +38,7 @@ public class Start {
 
         String input = clear.nextLine();
         System.out.println(System.lineSeparator().repeat(50));
-
     }
-
-    // TODO: hit any key to start new game
     static void newGame() {
         Game.enterDungeon();
     }

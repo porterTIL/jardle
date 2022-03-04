@@ -7,18 +7,13 @@ import java.util.List;
 
 abstract public class Wordle {
 
-    // return true if passed, false if fail
-    // TODO: add difficulty as parameter
+    // return true if win, false if fail
     public static boolean miniGame(){
         String secretWord = null;
-
-        // TODO: implement userGuesses so that box colors of each guess will be displayed in chart at round conclusion
-        String[] userGuesses = new String[5];
 
         // may need refactor if we begin to experience bottleneck as dictionary file grows
         List<String> words = new ArrayList<>(); // stores all words from our dictionary file so that we can easily grab random word
        try {
-               // TODO: the filePath for the fileReader is not consistent across systems
                Scanner wordList = new Scanner(new FileReader("C:\\StudentWork\\IntmJ\\workspace\\jardle\\src\\en_dictionary.csv"));
 
                while (wordList.hasNext()) {                    // loop through dictionary and add all words to ArrayList
@@ -39,19 +34,16 @@ abstract public class Wordle {
                Scanner userInput = new Scanner(System.in); // create scanner to take player input
                String userTry = userInput.nextLine(); // read line from scanner to compare against the secret word
 
-               // test validity of user input
-               // TODO: on more difficult levels the word may be longer
-               // TODO: make sure that userTry is a word in the library
-               // TODO: reject user input if any non-alphabet characters are used
+               // test length validity of user input
                if (userTry.length() != 5) {            // user try must be x characters long
                    System.out.println("Valid words are exactly 5 characters long");
                    System.out.println("Try has not counted");
                    tries--;                            //  decrement number of tries, offsetting the loop iteration, because the input was invalid
                    continue;                           // run loop again
                }
+
                // win logic
                if (userTry.equalsIgnoreCase(secretWord)) {    // the user input can be upper or lower case
-                   // TODO: implement more logic for win scenario - provide data about battle and overall character state; add win screen
                    System.out.println("You win");
                    return true;
                }
@@ -92,13 +84,12 @@ abstract public class Wordle {
                 }
             }
             // format feedback for your guess
-            // TODO: feedback should overwrite the text user entered into the terminal
             StringBuilder displayFeedback = new StringBuilder(ANSI_RESET.length() * userTry.length() + userTry.length()); // the ansi color codes used all have the same length, bright colors are one character longer
             for (int i = 0; i < userTry.length(); i++) {
                 displayFeedback.append(colorFeedback[i]);
                 displayFeedback.append(userTry.charAt(i));
             }
-            System.out.println("\033[F" + displayFeedback);
+            System.out.println("\033[F" + displayFeedback);  // escape character moves cursor to the beginning of the previous line, this overwrites the user input word with the colorized version.
             System.out.print(ANSI_RESET);
            }
           return false;
